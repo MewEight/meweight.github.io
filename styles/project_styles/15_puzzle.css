@@ -1,78 +1,151 @@
-@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
-#puzzle_title
+.project-detail-card
 {
-    color: rgba(255, 255, 255, 255);
-    /* -webkit-text-stroke: 2px rgb(255, 255, 255); */
-    font-family: 'Major Mono Display', monospace;
-    font-size: 5.8rem; 
-    letter-spacing: +0.7rem;
-    text-align: center;
-    padding-bottom: 25px;
-} 
-
-#github_link_puzzle {
-    margin: 30px auto;
-    text-align: center;
-    font-family: 'cascadia', monospace;
-    font-size: 1.6rem;
+    margin-top: 0.9rem;
+    padding: 1rem;
+    border: 1px solid var(--line-soft);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
 }
 
-#github_link_puzzle a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border: 2px solid white;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
+.project-detail-header
+{
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.project-detail-title
+{
+    margin: 0;
+    color: var(--text-main);
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(1.5rem, 3.4vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.03rem;
+}
+
+.project-detail-badges
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.project-detail-badges img
+{
+    border-radius: 6px;
+}
+
+.project-detail-links
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.project-detail-links a
+{
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    gap: 0.45rem;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--line-medium);
+    border-radius: 10px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.03rem;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.03);
+    transition: border-color 180ms ease, background 180ms ease;
 }
 
-#github_link_puzzle a:hover {
-    background-color: white;
-    color: #1d2e1f;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-    text-shadow: none;
-}
-
-#github_link_puzzle a:hover i.fa {
-    color: #1d2e1f; /* red on hover, for example */
-}
-
-
-#puzzle_quote
+.project-detail-links a:hover
 {
-    font-family: 'VT323', 'monospace';
-    color: rgba(255, 255, 255, 255);
-    border-color: rgba(255, 255, 255, 0.2);
-    text-align: center;
-    font-size: 25px;
+    border-color: var(--accent-strong);
+    background: var(--accent-soft);
 }
 
-#puzzle_tldr
+.project-detail-links i.fa
 {
-    text-align: center;
+    color: var(--accent-strong);
 }
 
-#puzzle_body
+.project-detail-body
 {
-    text-align: center;
-    font-family: 'cascadia', 'monospace';
+    margin-top: 0.95rem;
 }
 
-#puzzle_youtube
+.project-detail-media
 {
-    text-align: center;
+    margin-bottom: 0.8rem;
 }
 
-.puzzle_text
+.project-video-wrap
 {
-    color: rgba(255, 255, 255, 255);
-    font-size: 1.8rem; 
-    letter-spacing: -.05rem;
-} 
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border: 1px solid var(--line-soft);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.project-video-wrap iframe
+{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.project-detail-list
+{
+    margin: 0;
+    padding-left: 1.1rem;
+}
+
+.project-detail-list li
+{
+    margin-top: 0.55rem;
+    color: var(--text-soft);
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.98rem;
+    line-height: 1.75;
+}
+
+.banner-img
+{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0;
+    border: 1px solid var(--line-soft);
+    border-radius: 12px;
+    display: block;
+}
+
+@media (max-width: 760px)
+{
+    .project-detail-card
+    {
+        padding: 0.9rem;
+    }
+
+    .project-detail-links
+    {
+        flex-direction: column;
+    }
+
+    .project-detail-links a
+    {
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+}
 

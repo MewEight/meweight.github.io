@@ -10,7 +10,6 @@ const ProjectNames =
     "caveboygo",
     "heroesbattle",
     "lightaway",
-    "alienpath",
     "bounceahead",
     "battleoftherim",
     "elegem",

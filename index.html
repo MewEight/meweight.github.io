@@ -3,6 +3,7 @@
     <head>
         <!-- Metadata -->
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <!-- Mobile Specific Metas -->
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
@@ -21,11 +22,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <!-- Project related css files --> 
-        <link rel="stylesheet" type="text/css" href="./styles/project_styles/mirage.css"/>
-        <link rel="stylesheet" type="text/css" href="./styles/project_styles/exalted.css"/>
         <link rel="stylesheet" type="text/css" href="./styles/project_styles/15_puzzle.css"/>
-        <link rel="stylesheet" type="text/css" href="./styles/project_styles/game_tech.css"/>
-        <link rel="stylesheet" type="text/css" href="./styles/project_styles/vpa.css"/>
 
         <!-- Icon -->
         <link rel="icon" type="image/png" href="./data/images/icon_trans.png">
@@ -38,45 +35,132 @@
     </head>
 
     <!-- Add a custom container class implementation here.... -->
-    <body id="top">  
-        <div class="container" style="margin-top: 1%" align="center">   
-            <div id="title">Ooi Say Chong</div>            
-            <img class="landing_logo" src="./Data/images/profile.jpg" alt="Portrait">
-            <div id="quick_links">
-                <!-- <p id ="tooltip">Quick Links</p> -->
-                <!-- <a href="./Data/cv/ORI_LAZAR_2021.pdf" target="_blank"><i class="fa fa-file-text"></i></a> -->
-                <a href="mailto:saychong1991+github@hotmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/say-chong-ooi-040412b0/" target="_blank"><i class="fa fa-linkedin"></i></a>
+    <body id="top">
+        <header class="site-header">
+            <div class="site-header-inner container">
+                <div class="brand-block">
+                    <div class="brand-name">Ooi Say Chong</div>
+                    <div class="brand-role">Senior Unity Game Developer</div>
+                </div>
+                <nav class="main-nav">
+                    <a href="#top">Home</a>
+                    <a href="#featured">Highlights</a>
+                    <a href="#bottom">Portfolio</a>
+                </nav>
+                <a class="header-cta" href="mailto:saychong1991+github@hotmail.com" target="_blank" rel="noreferrer">Contact</a>
             </div>
-            <hr>
-            <div id="about_me">
-                Senior Unity Game Developer offering over 10 years of comprehensive experience in the game development lifecycle. 
-                Proficient in C# and the Unity platform, with a strong track record in developing shaders, custom editor tools, and executing quality assurance processes. 
-                Experienced in leading and mentoring teams comprising programmers, designers, and artists, driving projects from initial concept through successful launch. 
-                Possesses foundational skills in project planning and team management. 
-                Passionate about game development, actively pursuing personal projects for platforms such as itch.io and Google Play, alongside experience in game modding.</div>
-            <hr>
+        </header>
 
-            <section class="buttons">
-                <div class="button_container">
-                    <div id="projects-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 0;">Projects</div> 
-                    <div id="career-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 1;">Career</div> 
-                    <div id="skills-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 0;">Skills</div> 
+        <main class="landing-shell">
+            <section class="hero-card container">
+                <div class="hero-layout">
+                    <div class="hero-main">
+                        <div class="hero-eyebrow">Unity Engineering • Gameplay Systems • Team Leadership</div>
+                        <div id="title">Building Games That Ship Well</div>
+                        <div id="title_description">I help teams deliver stable gameplay features, production tooling, and cross-discipline workflows that hold up under real shipping pressure.</div>
+
+                        <div id="about_me">
+                            Senior Unity Game Developer with 10+ years of experience across mobile and PC production. Deeply hands-on with C#, gameplay architecture, custom editor tools, shader implementation, and quality pipelines. Comfortable leading technical execution from concept to post-launch support.
+                        </div>
+
+                        <div id="quick_links">
+                            <a class="quick-link" href="mailto:saychong1991+github@hotmail.com" target="_blank" rel="noreferrer" aria-label="Email">
+                                <i class="fa fa-envelope"></i>
+                                <span>Email</span>
+                            </a>
+                            <a class="quick-link" href="https://www.linkedin.com/in/say-chong-ooi-040412b0/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                                <i class="fa fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <aside class="hero-side">
+                        <div class="hero-portrait-frame">
+                            <img class="landing_logo" src="./Data/images/profile.jpg" alt="Portrait">
+                        </div>
+
+                        <div class="profile-panel">
+                            <div class="profile-panel-title">Current Focus</div>
+                            <div class="profile-panel-text">Reliable gameplay systems, tool-driven iteration speed, and technical mentorship for shipping teams.</div>
+                            <div class="hero-highlights">
+                                <span class="hero-pill">Unity C#</span>
+                                <span class="hero-pill">Editor Tooling</span>
+                                <span class="hero-pill">Gameplay Architecture</span>
+                                <span class="hero-pill">Shaders</span>
+                                <span class="hero-pill">QA Support</span>
+                                <span class="hero-pill">Mentoring</span>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
             </section>
-        </div>
+
+            <section class="impact-band container" id="featured">
+                <article class="impact-card">
+                    <div class="metric-value">10+</div>
+                    <div class="metric-label">Years in full-cycle game production</div>
+                </article>
+                <article class="impact-card">
+                    <div class="metric-value">3+</div>
+                    <div class="metric-label">Engines worked in professionally and independently</div>
+                </article>
+                <article class="impact-card">
+                    <div class="metric-value">Cross-Team</div>
+                    <div class="metric-label">Programmers, artists, and designers aligned</div>
+                </article>
+                <article class="impact-card">
+                    <div class="metric-value">Production</div>
+                    <div class="metric-label">Feature delivery from prototype to release</div>
+                </article>
+            </section>
+
+            <section class="featured-work container">
+                <div class="section-intro">
+                    <div class="section-kicker">Highlights</div>
+                    <div class="section-intro-copy">A practical blend of gameplay delivery, technical depth, and team support.</div>
+                </div>
+
+                <div class="featured-grid">
+                    <article class="featured-card">
+                        <h3>Gameplay Feature Ownership</h3>
+                        <p>Implemented and refined systems that stay maintainable over long production timelines while balancing player-facing quality and engineering constraints.</p>
+                    </article>
+                    <article class="featured-card">
+                        <h3>Internal Tools & Workflow</h3>
+                        <p>Built Unity editor extensions and supporting utilities to reduce repetitive work, improve iteration speed, and increase confidence in delivery.</p>
+                    </article>
+                    <article class="featured-card">
+                        <h3>Technical Leadership</h3>
+                        <p>Mentored teammates and coordinated implementation details across disciplines to keep quality high and production moving predictably.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="controls-zone container">
+                <div class="section-kicker">Explore</div>
+                <section class="buttons hero-nav">
+                    <div class="button_container">
+                        <div id="projects-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 0;">Projects</div>
+                        <div id="career-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 1;">Career</div>
+                        <div id="skills-Button" class="btn btn-5 kd-button" onClick="document.getElementById('project_data_area').style.opacity = 0;">Skills</div>
+                    </div>
+                </section>
+            </section>
+
+            <section id="bottom" class="content-shell container">
+                <div class="section-intro">
+                    <div class="section-kicker">Portfolio</div>
+                    <div class="section-intro-copy">Projects, career history, and technical capabilities.</div>
+                </div>
+                <div id="data_selection_area" class="container kd-selection-content" style="opacity: 0;"></div>
+                <div id="project_data_area" class="container kd-selection-content" style="opacity: 0;"></div>
+            </section>
+        </main>
 
         <!-- Scripts used in top body -->
-        <script src="scripts/text_animation.js"></script>
-    </body>
-
-    <div id="bottom">
-        <!-- Data_Labels -->
-        <div id="data_selection_area" class="container kd-selection-content" style="opacity: 0;"></div>
-        <div id="project_data_area" class="container kd-selection-content" style="opacity: 0;"></div>
         <script src="scripts/button_nav_selection.js"></script>
         <script src="scripts/button_nav_proj.js"></script>
         <script src="scripts/button_nav_career.js"></script>
-
-    </div>
+    </body>
 </html>
