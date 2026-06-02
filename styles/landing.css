@@ -773,7 +773,7 @@ hr,
 .tile-skill-container
 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 15px;
     margin-top: 20px;
 }
@@ -781,7 +781,7 @@ hr,
 .tile-skill
 {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 110px;
+    grid-template-columns: minmax(0, 1fr) minmax(90px, 110px);
     align-items: center;
     gap: 0.9rem;
     padding: 0.95rem 1.1rem;
@@ -794,9 +794,19 @@ hr,
 
 .skill-name
 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: block;
+    min-width: 0;
+    overflow: visible;
+    text-overflow: clip;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+.tile-skill .skill-name
+{
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: normal !important;
 }
 
 .skill-meter
