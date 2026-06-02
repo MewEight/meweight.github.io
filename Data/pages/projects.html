@@ -1,36 +1,55 @@
-<hr>
-<div id="pt">Browse through a selection of my projects with the buttons below!</div>
-<br>
+<section class="injected-panel">
+    <div class="injected-kicker">Projects</div>
+    <h2 class="injected-title">Selected Work</h2>
+    <p class="injected-subtitle">Pick a project to see implementation details, platforms, and technical contributions.</p>
 
-<div id="proj-button-section">
-    <script src="./scripts/button_nav_proj.js"></script>
-    <div id="rider-button" class="proj-button" onClick="LoadProject(this,0);">
-        <img class="proj-button-img" src="./Data/images/Rider.jpg" alt="rider">
+    <div class="injected-stat-grid">
+        <article class="injected-stat-card">
+            <div class="injected-stat-value">9</div>
+            <div class="injected-stat-label">Featured Projects</div>
+        </article>
+        <article class="injected-stat-card">
+            <div class="injected-stat-value">Unity</div>
+            <div class="injected-stat-label">Primary Production Stack</div>
+        </article>
+        <article class="injected-stat-card">
+            <div class="injected-stat-value">Live</div>
+            <div class="injected-stat-label">Shipped & Personal Releases</div>
+        </article>
     </div>
-    <div id="riderworlds-button" class="proj-button" onClick="LoadProject(this,1);">
-        <img class="proj-button-img" src="./Data/images/RiderWorlds.jpg" alt="riderworlds">
+
+    <div id="pt" class="selector-helper-text">Use the image buttons below to switch project details.</div>
+
+    <div id="proj-button-section" class="project-selector-grid">
+        <script src="./scripts/button_nav_proj.js"></script>
+        <div id="rider-button" class="proj-button" onClick="LoadProject(this,0);">
+            <img class="proj-button-img" src="./Data/images/Rider.jpg" alt="rider">
+        </div>
+        <div id="riderworlds-button" class="proj-button" onClick="LoadProject(this,1);">
+            <img class="proj-button-img" src="./Data/images/RiderWorlds.jpg" alt="riderworlds">
+        </div>
+        <div id="heroesbattle-button" class="proj-button" onClick="LoadProject(this,4);">
+            <img class="proj-button-img" src="./Data/images/HeroesBattle.jpg" alt="heroesbattle">
+        </div>
+        <div id="shootnloot-button" class="proj-button" onClick="LoadProject(this,2);">
+            <img class="proj-button-img" src="./Data/images/shootnloot.jpg" alt="shootnloot">
+        </div>
+        <div id="bounceahead-button" class="proj-button" onClick="LoadProject(this,7);">
+            <img class="proj-button-img" src="./Data/images/BounceAhead.png" alt="bounceahead">
+        </div>
+        <div id="battleoftherim-button" class="proj-button" onClick="LoadProject(this,8);">
+            <img class="proj-button-img" src="./Data/images/BattleOfTheRim.png" alt="battleoftherim">
+        </div>
+        <div id="lightaway-button" class="proj-button" onClick="LoadProject(this,5);">
+            <img class="proj-button-img" src="./Data/images/LightAway.jpg" alt="lightaway">
+        </div>
+        <div id="caveboygo-button" class="proj-button" onClick="LoadProject(this,3);">
+            <img class="proj-button-img" src="./Data/images/CaveboyGO.jpg" alt="caveboygo">
+        </div>
+        <div id="elegem-button" class="proj-button" onClick="LoadProject(this,9);">
+            <img class="proj-button-img" src="./Data/images/elegem.png" alt="elegem">
+        </div>
     </div>
-    <div id="heroesbattle-button" class="proj-button" onClick="LoadProject(this,4);">
-        <img class="proj-button-img" src="./Data/images/HeroesBattle.jpg" alt="heroesbattle">
-    </div>
-    <div id="shootnloot-button" class="proj-button" onClick="LoadProject(this,2);">
-        <img class="proj-button-img" src="./Data/images/shootnloot.jpg" alt="shootnloot">
-    </div>
-    <div id="bounceahead-button" class="proj-button" onClick="LoadProject(this,7);">
-        <img class="proj-button-img" src="./Data/images/BounceAhead.png" alt="bounceahead">
-    </div>
-    <div id="battleoftherim-button" class="proj-button" onClick="LoadProject(this,8);">
-        <img class="proj-button-img" src="./Data/images/BattleOfTheRim.png" alt="battleoftherim">
-    </div>
-    <div id="lightaway-button" class="proj-button" onClick="LoadProject(this,5);">
-        <img class="proj-button-img" src="./Data/images/LightAway.jpg" alt="lightaway">
-    </div>
-    <div id="caveboygo-button" class="proj-button" onClick="LoadProject(this,3);">
-        <img class="proj-button-img" src="./Data/images/CaveboyGO.jpg" alt="caveboygo">
-    </div>
-    <div id="elegem-button" class="proj-button" onClick="LoadProject(this,9);">
-        <img class="proj-button-img" src="./Data/images/elegem.png" alt="elegem">
-    </div>
-</div>
+</section>
 
 
