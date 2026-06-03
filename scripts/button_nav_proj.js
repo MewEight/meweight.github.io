@@ -13,6 +13,8 @@ const ProjectNames =
     "bounceahead",
     "battleoftherim",
     "elegem",
+    "pileup",
+    "pizzakitchen"
 ]
 
 let ProjectText = [];
