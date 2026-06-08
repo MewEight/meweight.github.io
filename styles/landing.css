@@ -112,6 +112,16 @@ a
 }
 
 .main-nav a
+{
+    padding: 0.45rem 0.7rem;
+    border-radius: 10px;
+    color: var(--text-soft);
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.84rem;
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
+}
 
 /* Subtle hero description and stronger about text */
 #title_description.muted {
@@ -159,16 +169,6 @@ a
 
 .hero-highlights .hero-pill + .hero-pill {
     margin-left: 0.4rem;
-}
-{
-    padding: 0.45rem 0.7rem;
-    border-radius: 10px;
-    color: var(--text-soft);
-    text-decoration: none;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 0.84rem;
-    letter-spacing: 0.06rem;
-    text-transform: uppercase;
 }
 
 .main-nav a:hover
@@ -237,6 +237,7 @@ a
 .hero-main
 {
     min-width: 0;
+    grid-column: 1;
 }
 
 .hero-eyebrow,
@@ -321,9 +322,7 @@ i.fa
 
 .hero-side
 {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
+    display: contents;
 }
 
 .hero-portrait-frame,
@@ -336,6 +335,8 @@ i.fa
 
 .hero-portrait-frame
 {
+    grid-column: 2;
+    align-self: start;
     padding: 0.8rem;
 }
 
@@ -352,6 +353,8 @@ i.fa
 
 .profile-panel
 {
+    grid-column: 1 / -1;
+    margin-top: 0.9rem;
     padding: 1rem;
 }
 
@@ -949,7 +952,15 @@ hr,
 
     .hero-side
     {
-        max-width: 420px;
+        width: 100%;
+        max-width: none;
+    }
+
+    .hero-main,
+    .hero-portrait-frame,
+    .profile-panel
+    {
+        grid-column: 1;
     }
 }
 
@@ -1141,16 +1152,17 @@ hr,
 
     .hero-side
     {
-        align-items: center;
-        justify-self: center;
-        margin-inline: auto;
+        align-items: stretch;
+        justify-self: stretch;
+        margin-inline: 0;
     }
 
     .hero-portrait-frame,
     .profile-panel
     {
-        width: min(100%, 340px);
-        margin-inline: auto;
+        width: auto;
+        box-sizing: border-box;
+        margin-inline: 0;
     }
 
     .profile-panel-title,
