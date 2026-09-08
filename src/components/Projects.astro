@@ -1,104 +1,281 @@
 ---
+import { Image } from "astro:assets";
 import { siteConfig } from "../config";
+import Icon from "./Icons.astro";
+import { getSkillIcon, renderIconMarkup } from "../icons";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
+
+// Flatten to plain, serializable data for the client-side modal script.
+// (ImageMetadata objects from astro:assets are already plain {src,width,height,format},
+// so this is safe to pass straight into define:vars.) Skill icons are
+// pre-rendered to raw SVG markup here since Astro components can't run
+// inside the client-side modal script — see src/icons.ts for the source data.
+const projectsData = hasProjects
+  ? siteConfig.projects.map((project) => ({
+      name: project.name ?? "",
+      role: project.role ?? "",
+      description: project.description ?? "",
+      bullets: project.bullets ?? [],
+      skills: (project.skills ?? []).map((skill) => {
+        const icon = getSkillIcon(skill);
+        return { name: skill, icon: icon ? renderIconMarkup(icon, "w-3.5 h-3.5") : null };
+      }),
+      image: project.image ?? null,
+      // Backward-compatible: support either a single `link` string,
+      // or a `links: [{ label, url }]` array for multiple stores/platforms.
+      links: project.links?.length
+        ? project.links
+        : project.link
+          ? [{ label: "View Project", url: project.link }]
+          : [],
+    }))
+  : [];
 ---
 
 {
   hasProjects && (
     <section id="projects" class="p-8 sm:p-12 md:p-16 lg:p-24">
       <div>
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-          <div class="lg:col-span-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
-              Projects
-            </h2>
-            <div
-              class="w-[75px] h-[5px] mt-2 rounded-full"
-              style={`background-color: ${siteConfig.accentColor}`}
-            />
-          </div>
+        <div class="mb-10 lg:mb-14">
+          <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+            Projects
+          </h2>
+          <div
+            class="w-[75px] h-[5px] mt-2 rounded-full"
+            style={`background-color: ${siteConfig.accentColor}`}
+          />
+        </div>
 
-          <div class="lg:col-span-8">
-            <div class="space-y-8">
-              {siteConfig.projects.map((project, index) => {
-                const Component = project.link ? "a" : "div";
-                const linkProps = project.link
-                  ? {
-                      href: project.link,
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    }
-                  : {};
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+          {siteConfig.projects.map((project, index) => (
+            <div class="group relative aspect-square">
+              <button
+                type="button"
+                data-project-index={index}
+                aria-haspopup="dialog"
+                class="project-trigger relative flex flex-col justify-end w-full h-full overflow-hidden rounded-xl sm:rounded-2xl border border-gray-200 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-gray-300 text-left cursor-pointer"
+              >
+                {/* Background image */}
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt=""
+                    width={400}
+                    height={400}
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="absolute inset-0 w-full h-full bg-gray-900" />
+                )}
 
-                return (
-                  <div class="group relative">
-                    <Component
-                      {...linkProps}
-                      class={`block relative p-4 sm:p-6 md:p-8 bg-gray-50 rounded-xl sm:rounded-2xl border border-gray-200 transition-all duration-300 ${
-                        project.link
-                          ? "hover:bg-white hover:shadow-xl hover:border-gray-300 hover:-translate-y-1"
-                          : ""
-                      }`}
-                    >
-                      {project.link && (
-                        <div class="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 flex items-center justify-center bg-gray-900 rounded-full text-white transition-all duration-300 group-hover:bg-gray-700">
-                          <svg
-                            class="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M7 17L17 7M17 7H7M17 7V17"
-                            />
-                          </svg>
-                        </div>
-                      )}
+                {/* Gradient scrim so text stays readable over any image */}
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10 transition-opacity duration-300 group-hover:from-black/95" />
 
-                      <div class="space-y-4">
-                        <div>
-                          <span
-                            class="text-sm font-mono"
-                            style={{ color: siteConfig.accentColor }}
-                          >
-                            0{index + 1}
+                {/* Expand icon, top-right, hints that this opens details */}
+                <div class="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center bg-white/15 backdrop-blur-sm rounded-full text-white transition-all duration-300 group-hover:bg-white group-hover:text-gray-900">
+                  <svg
+                    class="w-3 h-3 sm:w-3.5 sm:h-3.5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2.5"
+                      d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                    />
+                  </svg>
+                </div>
+
+                {/* Text content, pinned to bottom over the scrim */}
+                <div class="relative z-10 p-3 sm:p-4">
+                  <h3 class="text-sm sm:text-base font-bold text-white leading-snug line-clamp-2">
+                    {project.name}
+                  </h3>
+
+                  <p class="hidden sm:block text-xs text-gray-200 leading-snug mt-1 line-clamp-2 opacity-0 max-h-0 group-hover:opacity-100 group-hover:max-h-16 transition-all duration-300 overflow-hidden">
+                    {project.description}
+                  </p>
+
+                  {project.skills && project.skills.length > 0 && (
+                    <div class="flex flex-wrap gap-1 mt-2">
+                      {project.skills.slice(0, 5).map((skill) => {
+                        const iconName = getSkillIcon(skill);
+                        return (
+                          <span class="flex items-center gap-1 px-1.5 py-0.5 bg-white/15 backdrop-blur-sm text-white rounded text-[9px] sm:text-[10px] font-medium">
+                            {iconName && (
+                              <Icon name={iconName} class="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                            )}
+                            {skill}
                           </span>
-                          <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-1">
-                            {project.name}
-                          </h3>
-                        </div>
-
-                        <p
-                          class={`text-base sm:text-lg text-gray-600 leading-relaxed ${project.link ? "pr-12 sm:pr-14 md:pr-16" : ""}`}
-                        >
-                          {project.description}
-                        </p>
-
-                        {project.skills && project.skills.length > 0 && (
-                          <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-2">
-                            {project.skills.map((skill) => (
-                              <span
-                                class={`px-2.5 sm:px-3 py-1 sm:py-1.5 bg-gray-900 text-white rounded-md sm:rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
-                                  project.link ? "group-hover:bg-gray-800" : ""
-                                }`}
-                              >
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </Component>
-                  </div>
-                );
-              })}
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              </button>
             </div>
-          </div>
+          ))}
         </div>
       </div>
+
+      {/* Single reusable modal, populated via JS on click */}
+      <dialog
+        id="project-modal"
+        class="backdrop:bg-black/60 backdrop:backdrop-blur-sm bg-transparent p-0 m-auto max-w-none w-full h-full max-h-none open:flex items-center justify-center"
+      >
+        <div class="relative w-[92vw] max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl bg-white shadow-2xl">
+          <button
+            type="button"
+            id="modal-close"
+            aria-label="Close"
+            class="absolute top-3 right-3 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-black/60 transition-colors"
+          >
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2.5"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          <div id="modal-image-wrap" class="relative w-full h-56 sm:h-72 bg-gray-900">
+            <img
+              id="modal-image"
+              src=""
+              alt=""
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <div class="absolute bottom-0 left-0 p-5 sm:p-6">
+              <p
+                id="modal-role"
+                class="hidden text-xs sm:text-sm font-semibold uppercase tracking-wide mb-1"
+              />
+              <h3
+                id="modal-name"
+                class="text-2xl sm:text-3xl font-bold text-white leading-tight"
+              />
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6">
+            <p id="modal-description" class="text-sm sm:text-base text-gray-700 leading-relaxed" />
+
+            <ul id="modal-bullets" class="mt-4 space-y-2" />
+
+            <div id="modal-skills" class="flex flex-wrap gap-1.5 mt-5" />
+
+            <div id="modal-links" class="flex flex-wrap gap-2.5 mt-6" />
+          </div>
+        </div>
+      </dialog>
     </section>
   )
 }
+
+<script define:vars={{ projectsData, accentColor: siteConfig.accentColor }}>
+  const modal = document.getElementById("project-modal");
+  const closeBtn = document.getElementById("modal-close");
+  const imageEl = document.getElementById("modal-image");
+  const roleEl = document.getElementById("modal-role");
+  const nameEl = document.getElementById("modal-name");
+  const descriptionEl = document.getElementById("modal-description");
+  const bulletsEl = document.getElementById("modal-bullets");
+  const skillsEl = document.getElementById("modal-skills");
+  const linksEl = document.getElementById("modal-links");
+
+  function checkIconSvg() {
+    return `<svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" stroke="${accentColor}" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>`;
+  }
+
+  function openModal(index) {
+    const project = projectsData[index];
+    if (!project) return;
+
+    imageEl.src = project.image?.src ?? "";
+    imageEl.alt = project.name;
+    nameEl.textContent = project.name;
+
+    if (project.role) {
+      roleEl.textContent = project.role;
+      roleEl.style.color = "white";
+      roleEl.classList.remove("hidden");
+    } else {
+      roleEl.classList.add("hidden");
+    }
+
+    descriptionEl.textContent = project.description;
+
+    bulletsEl.innerHTML = "";
+    project.bullets.forEach((bullet) => {
+      const li = document.createElement("li");
+      li.className = "flex items-start gap-2 text-sm text-gray-600";
+      li.innerHTML = `${checkIconSvg()}<span>${bullet}</span>`;
+      bulletsEl.appendChild(li);
+    });
+
+    skillsEl.innerHTML = "";
+    project.skills.forEach((skill) => {
+      const span = document.createElement("span");
+      span.className =
+        "flex items-center gap-1.5 px-2.5 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium";
+      span.innerHTML = `${skill.icon ?? ""}<span>${skill.name}</span>`;
+      skillsEl.appendChild(span);
+    });
+
+    linksEl.innerHTML = "";
+    project.links.forEach((link) => {
+      const a = document.createElement("a");
+      a.href = link.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = link.label;
+      a.className =
+        "px-4 py-2 rounded-lg text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5";
+      a.style.backgroundColor = accentColor;
+      linksEl.appendChild(a);
+    });
+
+    modal.showModal();
+  }
+
+  document.querySelectorAll(".project-trigger").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      openModal(Number(btn.dataset.projectIndex));
+    });
+  });
+
+  closeBtn.addEventListener("click", () => modal.close());
+
+  // Close when clicking the backdrop (outside the card)
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) modal.close();
+  });
+</script>
+
+<style>
+  #project-modal[open] {
+    animation: modalFadeIn 0.2s ease-out;
+  }
+
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+</style>

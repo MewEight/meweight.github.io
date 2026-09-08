@@ -1,6 +1,19 @@
+import pizzaKitchenImg from "../src/images/pizzakitchen.png"
+import pileUpImg from "../src/images/pileup.png"
+import riderImg from "../src/images/Rider.jpg"
+import riderWorldsImg from "../src/images/RiderWorlds.jpg"
+import heroesBattleImg from "../src/images/HeroesBattle.jpg"
+import shootnlootImg from "../src/images/shootnloot.jpg"
+import bounceAHeadImg from "../src/images/BounceAhead.png"
+import battleOfTheRimImg from "../src/images/BattleOfTheRim.png"
+import lightAWayImg from "../src/images/LightAway.jpg"
+import caveboyGoImg from "../src/images/CaveboyGO.jpg"
+import profilePicture from "../src/images/profile.jpg"
+
 export const siteConfig = {
   name: "Ooi Say Chong",
   title: "Senior Game Developer",
+  profilePicture: profilePicture,
   description: "Portfolio website of Ryan Fitzgerald",
   accentColor: "#1d4ed8",
   social: {
@@ -9,29 +22,187 @@ export const siteConfig = {
     github: "https://github.com/MewEight",
   },
   aboutMe:
-    "Senior Game Developer with 10+ years of experience making games. I have worked on title that are published on multiple platforms (Android, iOS, and PC). My main stack is mainly Unity, but I am always learning more and experimenting more with other game engines, like Godot, and Unreal. I have built games that are prototypes, to full on production games that are played by millions.",
+    "I have 10+ years of experience making games. I have worked on title that are published on multiple platforms (Android, iOS, and PC). My main stack is mainly Unity, but I am always learning more and experimenting more with other game engines, like Godot, and Unreal. I have built games that are prototypes, to full on production games that are played by millions.",
   skills: ["Unity", "Godot", "Solar2D", "C/C++/C#", "JavaScript", "Python", "Lua", "Typescript"],
   projects: [
     {
-      name: "AI Dev Roundup Newsletter",
+      name: "Pizza Kitchen",
+      image: pizzaKitchenImg,
+      role: "Senior Game Developer",
       description:
-        "One concise email. Five minutes. Every Tuesday. Essential AI news & trends, production-ready libraries, powerful AI tools, and real-world code examples",
-      link: "https://aidevroundup.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "A VR game on the Horizon Worlds platform. Role play as anything you wish for in a pizza island.",
+      bullets:
+        [
+          "Ported the game over to a new engine",
+          "Worked with a custom ui engine that is similar to noesis gui",
+          "Implemented gameplay features with VR and mobile interactions in mind",
+        ],
+        links: [
+          { label: "Horizon", url: "https://horizon.meta.com/world/489075530784006/" },
+        ],
+      skills: ["Horizon Editor", "PC"],
     },
     {
-      name: "Chrome Extension Mastery: Build Full-Stack Extensions with React & Node.js",
+      name: "Pile Up",
+      image: pileUpImg,
+      role: "Lead Game Developer",
       description:
-        "Master the art of building production-ready, full-stack Chrome Extensions using modern web technologies and best practices",
-      link: "https://fullstackextensions.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "A cozy, object stacking puzzle game with playful physics - every object matters. Work together with a friend, plan each move carefully, enchant objects with unique traits, and master balance and strategy to build the tallest pile imaginable!",
+      bullets:
+        [
+          "Implemented mirror networking and steam integrations",
+          "Sole developer on the project",
+          "Created tools to speed up development",
+          "Done in 3 months",
+        ],
+      links: [
+        { label: "Steam", url: "https://store.steampowered.com/app/3994220/Pile_Up/" },
+      ],
+      skills: ["Unity", "Steam", "PC"],
     },
     {
-      name: "ExtensionKit",
+      name: "Rider",
+      image: riderImg,
+      role: "Lead Game Developer / Senior Game Developer / Product Owner",
       description:
-        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
-      link: "https://extensionkit.io/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "A 2D physics based endless runner.",
+      bullets:
+        [
+          "Primary developer for the project before it moved to Unity",
+          "Implemented core meta systems, like daily login, achievements, progressions, and competitions",
+          "Developed shader and vfx integrations",
+          "Optimized the game and reduced draw calls",
+          "Integrated 3rd party sdks",
+        ],
+      links: [
+        { label: "iOS", url: "https://apps.apple.com/us/app/rider-stunt-bike-racing/id1229618961" },
+        { label: "Android", url: "https://play.google.com/store/apps/details?id=com.ketchapp.rider" },
+      ],
+      skills: ["Unity", "Solar2D", "Android", "iOS"],
+    },
+    {
+      name: "Rider Worlds",
+      image: riderWorldsImg,
+      role: "Senior Game Developer",
+      description:
+        "A sequel to the original Rider game. Now in 3D and more obstacles",
+      bullets:
+        [
+          "Implemented main progression systems",
+          "Implemented addressable system.",
+          "Built tools to help accelerate level and gameplay design",
+          "Implemented 3rd party sdk",
+          "Guided other developers on system integration and planning"
+        ],
+      links: [
+        { label: "iOS", url: "https://apps.apple.com/us/app/rider-worlds-neon-bike-races/id6449429925" },
+        { label: "Android", url: "https://play.google.com/store/apps/details?id=com.ketchapp.rider.evolution.world.race.car.bike.flip" },
+      ],
+      skills: ["Unity", "Android", "iOS"],
+    },
+    {
+      name: "Heroes Battle",
+      image: heroesBattleImg,
+      role: "Game Designer",
+      description:
+        "A tactical RPG and Autobattler",
+      bullets:
+        [
+          "Implemented the IAP framework that was later adopted across all projects in the company",
+          "Refined AI behaviour",
+          "Created tooling to quickly playtest units",
+        ],
+      links: [
+        { label: "iOS", url: "https://apps.apple.com/nl/app/heroes-battle-auto-battler-rpg/id1497855667" },
+      ],
+      skills: ["Unity", "Android", "iOS"],
+    },
+    {
+      name: "Shoot N Loot",
+      image: shootnlootImg,
+      role: "Game Developer",
+      description:
+        "A action hero adventure game with roguelike elements. Heavily insprired by Archero",
+      bullets:
+        [
+          "Implemented enemy AI behaviour. Create a system that is easy to expand on",
+          "Created a level editor for designers to create levels, and quickly test them",
+          "Optimized the game to reduce performance impact because of the amount of level and resources needed",
+          "Implemented general optimization techniques for UI and objects",
+        ],
+      links: [
+        { label: "iOS", url: "https://apps.apple.com/gb/app/shoot-n-loot-action-rpg/id1479961209" },
+      ],
+      skills: ["Unity", "Android", "iOS"],
+    },
+    {
+      name: "Bounce AHead",
+      image: bounceAHeadImg,
+      role: "Lead Game Developer / Product Owner",
+      description:
+        "A physics based game, with hyper casual gameplay in mind.",
+      bullets:
+        [
+          "Implemented core function of the game and the progression system",
+          "Game later used as the testbed for junior developers",
+          "Secured a local grant for the game after 1 month of development",
+        ],
+      links: [
+      ],
+      skills: ["Unity", "Android", "iOS"],
+    },
+    {
+      name: "Battle of The Rim",
+      image: battleOfTheRimImg,
+      role: "Lead Game Developer",
+      description:
+        "A MOBA game with a twist of having a single boss as the main victory condition. Heavily inspired by Dota",
+      bullets:
+        [
+          "Prototyped the game on the dota engine",
+          "Recreated the prototype on Unity with photon networking",
+          "Created tools to fasten development iteration on skills",
+          "Optimized networking elements to improved responsiveness",
+        ],
+      links: [
+      ],
+      skills: ["Unity", "PC", "Source2"],
+    },
+    {
+      name: "Light A Way",
+      image: lightAWayImg,
+      role: "Game Developer",
+      description:
+        "Idle game where you are gifted with the magical Staff of Flare, you must set on a path to restore the Light back to the world and rid the darkness that has tainted the very lands that you step on",
+      bullets:
+      [
+        "Implemented core progression system like rebirth and constellation system",
+        "Implemented VFX and Spine animation",
+        "Build UI and tweening transitions to improve game feel",
+        "Supported back-end to build internal SDK for cross-promo",
+      ],
+      links: [
+        { label: "iOS", url: "https://apps.apple.com/us/app/light-a-way/id1228576904" },
+      ],
+      skills: ["Unity", "Android", "iOS"],
+    },
+    {
+      name: "Caveboy GO",
+      image: caveboyGoImg,
+      role: "Game Developer",
+      description:
+        "A 2d puzzle game with match 3 elements",
+      bullets:
+      [
+        "Converted a legacy game to a new modern take",
+        "Implemented all the systems, and integrated a new UI workflow",
+        "Solo developer on the project with one artist and a designer",
+        "Brought concept to life, within 9 months",
+      ],
+      links: [
+        { label: "iOS", url: "https://apps.apple.com/us/app/caveboy-go/id1148826821" },
+      ],
+      skills: ["Unity", "Android", "iOS"],
     },
   ],
   experience: [
