@@ -22,7 +22,7 @@ export const siteConfig = {
     github: "https://github.com/MewEight",
   },
   aboutMe:
-    "I have more than 10 years experience in making mobile & PC games. Over the years, I have worked on titles that are published on multiple platforms (Android, iOS, and PC). My main stack is Unity, but I am always learning and experimenting with other game engines, such as Godot and Unreal. I have built games from prototypes stage, all the way to full on production games that are played by millions.",
+    "I have more than 10 years of experience in making mobile & PC games. Over the years, I have worked on titles that are published on multiple platforms (Android, iOS, and PC). My main stack is Unity, but I am always learning and experimenting with other game engines, such as Godot and Unreal. I have built games from prototypes stage, all the way to full on production games that are played by millions.",
   skills: ["Unity", "Godot", "Solar2D", "C/C++/C#", "JavaScript", "Python", "Lua", "Typescript"],
   projects: [
     {
