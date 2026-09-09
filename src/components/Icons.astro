@@ -1,0 +1,37 @@
+---
+// src/components/Icon.astro
+import { iconPaths, type IconName } from "../icons";
+
+interface Props {
+  name: IconName;
+  class?: string;
+  strokeWidth?: number;
+}
+
+const { name, class: className = "w-4 h-4", strokeWidth = 2 } = Astro.props;
+const paths = iconPaths[name];
+---
+
+{
+  paths && (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width={strokeWidth}
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class={className}
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      {paths.map((p) =>
+        typeof p === "string" ? (
+          <path d={p} />
+        ) : (
+          <path d={p.d} fill="currentColor" stroke="none" />
+        )
+      )}
+    </svg>
+  )
+}
