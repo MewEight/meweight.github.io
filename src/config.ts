@@ -41,6 +41,7 @@ export const siteConfig = {
           { label: "Horizon", url: "https://horizon.meta.com/world/489075530784006/" },
         ],
       skills: ["Horizon Editor", "PC"],
+      trailer: "https://www.youtube.com/watch?v=KkUDyE7KxLw",
     },
     {
       name: "Pile Up",
@@ -59,6 +60,7 @@ export const siteConfig = {
         { label: "Steam", url: "https://store.steampowered.com/app/3994220/Pile_Up/" },
       ],
       skills: ["Unity", "Steam", "PC"],
+      trailer: "https://www.youtube.com/watch?v=4sJaake_-jA",
     },
     {
       name: "Rider",
@@ -79,6 +81,7 @@ export const siteConfig = {
         { label: "Android", url: "https://play.google.com/store/apps/details?id=com.ketchapp.rider" },
       ],
       skills: ["Unity", "Solar2D", "Android", "iOS"],
+      trailer: "https://www.youtube.com/watch?v=5_yiVYxrcII",
     },
     {
       name: "Rider Worlds",
@@ -99,6 +102,7 @@ export const siteConfig = {
         { label: "Android", url: "https://play.google.com/store/apps/details?id=com.ketchapp.rider.evolution.world.race.car.bike.flip" },
       ],
       skills: ["Unity", "Android", "iOS"],
+      trailer: "https://www.youtube.com/watch?v=VmrPbJTQInQ",
     },
     {
       name: "Heroes Battle",
@@ -116,6 +120,7 @@ export const siteConfig = {
         { label: "iOS", url: "https://apps.apple.com/nl/app/heroes-battle-auto-battler-rpg/id1497855667" },
       ],
       skills: ["Unity", "Android", "iOS"],
+      trailer: "https://www.youtube.com/watch?v=yRkd_QnzwlI",
     },
     {
       name: "Shoot N Loot",
@@ -134,6 +139,7 @@ export const siteConfig = {
         { label: "iOS", url: "https://apps.apple.com/gb/app/shoot-n-loot-action-rpg/id1479961209" },
       ],
       skills: ["Unity", "Android", "iOS"],
+      trailer: "https://www.youtube.com/watch?v=oNrdm_KMYIk",
     },
     {
       name: "Bounce AHead",
@@ -150,6 +156,7 @@ export const siteConfig = {
       links: [
       ],
       skills: ["Unity", "Android", "iOS"],
+      trailer: "https://www.youtube.com/watch?v=LbnPBt1zDTE",
     },
     {
       name: "Battle of The Rim",
@@ -167,6 +174,7 @@ export const siteConfig = {
       links: [
       ],
       skills: ["Unity", "PC", "Source2"],
+      trailer: "https://www.youtube.com/watch?v=NJNsJFoqaAo",
     },
     {
       name: "Light A Way",
@@ -185,6 +193,7 @@ export const siteConfig = {
         { label: "iOS", url: "https://apps.apple.com/us/app/light-a-way/id1228576904" },
       ],
       skills: ["Unity", "Android", "iOS"],
+      trailer: "https://www.youtube.com/watch?v=-9b9fGXzByI",
     },
     {
       name: "Caveboy GO",
@@ -203,6 +212,7 @@ export const siteConfig = {
         { label: "iOS", url: "https://apps.apple.com/us/app/caveboy-go/id1148826821" },
       ],
       skills: ["Unity", "Android", "iOS"],
+      trailer: "https://www.youtube.com/watch?v=lskJ1a9toLY",
     },
   ],
   experience: [
